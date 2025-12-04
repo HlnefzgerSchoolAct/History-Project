@@ -6,10 +6,16 @@
     <meta name="description" content="A comprehensive history project on the Hitler Youth organization - its formation, growth, daily activities, and impact on World War II">
     <title>Hitler Youth: Growing Up in Hitler's Shadow</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
             <ul>
                 <li><a href="#introduction">Introduction</a></li>
                 <li><a href="#vision">Hitler's Vision</a></li>
@@ -154,7 +160,109 @@
                 <p class="citation">"Hitler Youth." <em>Holocaust Encyclopedia</em>, United States Holocaust Memorial Museum, encyclopedia.ushmm.org/content/en/article/hitler-youth.</p>
             </div>
         </section>
+
+        <section id="quiz" class="content-section quiz">
+            <h2>Knowledge Check</h2>
+            <p>Test your understanding of the Hitler Youth history:</p>
+            
+            <form class="quiz-form">
+                <div class="quiz-question">
+                    <p class="question-text"><strong>1. When was the Hitler Youth organization formed?</strong></p>
+                    <label>
+                        <input type="radio" name="q1" value="a" data-correct="false">
+                        1933
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b" data-correct="true">
+                        1926
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c" data-correct="false">
+                        1939
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="d" data-correct="false">
+                        1945
+                    </label>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <p class="question-text"><strong>2. How many members did the Hitler Youth have by 1940?</strong></p>
+                    <label>
+                        <input type="radio" name="q2" value="a" data-correct="false">
+                        100,000
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b" data-correct="false">
+                        5.4 million
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c" data-correct="true">
+                        7.2 million
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d" data-correct="false">
+                        10 million
+                    </label>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <p class="question-text"><strong>3. What was the name of the illegal resistance group mentioned in the content?</strong></p>
+                    <label>
+                        <input type="radio" name="q3" value="a" data-correct="false">
+                        The White Rose
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b" data-correct="true">
+                        The Edelweiss Pirates
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c" data-correct="false">
+                        The Red Orchestra
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d" data-correct="false">
+                        The German Freedom League
+                    </label>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <p class="question-text"><strong>4. When did Hitler Youth membership become mandatory for ages 10-18?</strong></p>
+                    <label>
+                        <input type="radio" name="q4" value="a" data-correct="false">
+                        January 1933
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b" data-correct="true">
+                        March 1939
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c" data-correct="false">
+                        1940
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d" data-correct="false">
+                        1945
+                    </label>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <button type="button" class="quiz-submit">Submit Quiz</button>
+            </form>
+            
+            <div class="quiz-results" style="display: none;"></div>
+        </section>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <img class="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
 
     <footer>
         <p><strong>Created by:</strong> Harrison Nefzger</p>
