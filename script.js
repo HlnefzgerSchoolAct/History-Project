@@ -170,8 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightNav(); // Call on load
 });
 
-
-
 // ========================================
 // Timeline Animation for Membership Growth
 // ========================================
