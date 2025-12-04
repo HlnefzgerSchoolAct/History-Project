@@ -20,6 +20,7 @@
                 <li><a href="#resistance">Resistance</a></li>
                 <li><a href="#end">End of War</a></li>
                 <li><a href="#sources">Sources</a></li>
+                <li><a href="#quiz">Quiz</a></li>
             </ul>
         </nav>
     </header>
@@ -156,9 +157,277 @@
         </section>
     </main>
 
+    <!-- Interactive Quiz Section -->
+    <section id="quiz" class="content-section quiz-section">
+        <h2>Test Your Knowledge</h2>
+        <p class="quiz-intro">How much do you remember from what you've learned? Take this quiz to test your understanding of the Hitler Youth organization.</p>
+        
+        <form id="quiz-form">
+            <!-- Question 1 -->
+            <fieldset class="quiz-question">
+                <legend>1. When was the Hitler Youth organization formed?</legend>
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    <span>1920</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    <span>1926</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    <span>1933</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="d">
+                    <span>1939</span>
+                </label>
+            </fieldset>
+
+            <!-- Question 2 -->
+            <fieldset class="quiz-question">
+                <legend>2. How many members did the Hitler Youth have by 1940?</legend>
+                <label>
+                    <input type="radio" name="q2" value="a">
+                    <span>100,000 members</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b">
+                    <span>5.4 million members</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c">
+                    <span>7.2 million members</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="d">
+                    <span>10 million members</span>
+                </label>
+            </fieldset>
+
+            <!-- Question 3 -->
+            <fieldset class="quiz-question">
+                <legend>3. In March 1939, what ages were required to join the Hitler Youth?</legend>
+                <label>
+                    <input type="radio" name="q3" value="a">
+                    <span>Ages 8-16</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b">
+                    <span>Ages 10-18</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c">
+                    <span>Ages 12-20</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="d">
+                    <span>Ages 14-21</span>
+                </label>
+            </fieldset>
+
+            <!-- Question 4 -->
+            <fieldset class="quiz-question">
+                <legend>4. Which activity was NOT part of the Hitler Youth program for boys?</legend>
+                <label>
+                    <input type="radio" name="q4" value="a">
+                    <span>Military drills</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="b">
+                    <span>Weapons training</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="c">
+                    <span>Home cooking</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="d">
+                    <span>Boxing</span>
+                </label>
+            </fieldset>
+
+            <!-- Question 5 -->
+            <fieldset class="quiz-question">
+                <legend>5. What was the name of the resistance group that opposed the Hitler Youth?</legend>
+                <label>
+                    <input type="radio" name="q5" value="a">
+                    <span>The White Rose</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="b">
+                    <span>The Edelweiss Pirates</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="c">
+                    <span>The Iron Cross</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="d">
+                    <span>The Freedom Fighters</span>
+                </label>
+            </fieldset>
+
+            <!-- Question 6 -->
+            <fieldset class="quiz-question">
+                <legend>6. Who said "I belonged to Adolf Hitler, body and soul"?</legend>
+                <label>
+                    <input type="radio" name="q6" value="a">
+                    <span>Adolf Hitler</span>
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="b">
+                    <span>Heinrich Himmler</span>
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="c">
+                    <span>Alfons Heck</span>
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="d">
+                    <span>Joseph Goebbels</span>
+                </label>
+            </fieldset>
+
+            <!-- Question 7 -->
+            <fieldset class="quiz-question">
+                <legend>7. When was the Hitler Youth disbanded?</legend>
+                <label>
+                    <input type="radio" name="q7" value="a">
+                    <span>1943</span>
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="b">
+                    <span>1944</span>
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="c">
+                    <span>After the war in 1945</span>
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="d">
+                    <span>1946</span>
+                </label>
+            </fieldset>
+
+            <div class="quiz-controls">
+                <button type="submit" class="quiz-submit-btn">Check Answers</button>
+                <button type="button" class="quiz-reset-btn">Reset Quiz</button>
+            </div>
+        </form>
+
+        <div id="quiz-results" class="quiz-results" style="display: none;">
+            <h3 class="results-title">Your Results</h3>
+            <p class="results-score">You scored <span id="score">0</span> out of 7</p>
+            <p class="results-message" id="results-message"></p>
+            <button type="button" class="quiz-retry-btn">Try Again</button>
+        </div>
+    </section>
+
     <footer>
         <p><strong>Created by:</strong> Harrison Nefzger</p>
         <p><strong>Class:</strong> 4th Hour, Mrs. Huehnergarth's History Class</p>
     </footer>
+
+    <!-- Quiz JavaScript -->
+    <script>
+        // Quiz answers (correct answers are: b, c, b, c, b, c, c)
+        const correctAnswers = {
+            q1: 'b', // 1926
+            q2: 'c', // 7.2 million
+            q3: 'b', // Ages 10-18
+            q4: 'c', // Home cooking (was for girls)
+            q5: 'b', // Edelweiss Pirates
+            q6: 'c', // Alfons Heck
+            q7: 'c'  // After the war in 1945
+        };
+
+        const quizForm = document.getElementById('quiz-form');
+        const resultsDiv = document.getElementById('quiz-results');
+        const scoreSpan = document.getElementById('score');
+        const resultsMessage = document.getElementById('results-message');
+        const resetBtn = document.querySelector('.quiz-reset-btn');
+        const retryBtn = document.querySelector('.quiz-retry-btn');
+
+        // Submit quiz
+        quizForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            const questions = document.querySelectorAll('.quiz-question');
+            
+            // Check each answer
+            questions.forEach((question, index) => {
+                const questionNum = `q${index + 1}`;
+                const selectedAnswer = document.querySelector(`input[name="${questionNum}"]:checked`);
+                const labels = question.querySelectorAll('label');
+                
+                // Remove previous feedback
+                labels.forEach(label => {
+                    label.classList.remove('correct', 'incorrect');
+                });
+                
+                if (selectedAnswer) {
+                    const isCorrect = selectedAnswer.value === correctAnswers[questionNum];
+                    if (isCorrect) {
+                        score++;
+                        selectedAnswer.parentElement.classList.add('correct');
+                    } else {
+                        selectedAnswer.parentElement.classList.add('incorrect');
+                        // Highlight correct answer
+                        labels.forEach(label => {
+                            const input = label.querySelector('input');
+                            if (input.value === correctAnswers[questionNum]) {
+                                label.classList.add('correct');
+                            }
+                        });
+                    }
+                }
+            });
+            
+            // Display results
+            scoreSpan.textContent = score;
+            
+            // Personalized message based on score
+            let message = '';
+            const percentage = (score / totalQuestions) * 100;
+            
+            if (percentage === 100) {
+                message = 'Perfect score! You have an excellent understanding of the Hitler Youth history.';
+            } else if (percentage >= 85) {
+                message = 'Great job! You have a strong grasp of the material.';
+            } else if (percentage >= 70) {
+                message = 'Good work! You understand most of the key facts.';
+            } else if (percentage >= 50) {
+                message = 'Not bad! Review the content to improve your understanding.';
+            } else {
+                message = 'Keep studying! Re-read the sections above to learn more.';
+            }
+            
+            resultsMessage.textContent = message;
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Reset quiz
+        function resetQuiz() {
+            quizForm.reset();
+            resultsDiv.style.display = 'none';
+            
+            // Remove all feedback classes
+            document.querySelectorAll('.quiz-question label').forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+            });
+            
+            // Scroll back to quiz top
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        resetBtn.addEventListener('click', resetQuiz);
+        retryBtn.addEventListener('click', resetQuiz);
+    </script>
 </body>
 </html>
