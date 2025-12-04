@@ -1,0 +1,391 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Professional, somber color palette appropriate for historical content */
+    --primary-dark: #2c2c2c;
+    --secondary-dark: #3d3d3d;
+    --accent-brown: #8b7355;
+    --light-bg: #f5f5f0;
+    --white: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --border-color: #d4d4d4;
+    --highlight-bg: #e8e4dc;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--light-bg);
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--primary-dark);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+    border-radius: 3px;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: var(--secondary-dark);
+    outline: 2px solid var(--accent-brown);
+    outline-offset: 2px;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    background-color: var(--white);
+    border-bottom: 3px solid var(--accent-brown);
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Content Sections */
+.content-section {
+    background-color: var(--white);
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent-brown);
+    padding-bottom: 0.5rem;
+}
+
+.content-section h3 {
+    font-size: 1.5rem;
+    color: var(--secondary-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.content-section p {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.content-section ul {
+    margin-left: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.content-section li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+/* Highlight Sections */
+.highlight-section {
+    background-color: var(--highlight-bg);
+}
+
+/* Content Wrapper for Layout */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 5px solid var(--accent-brown);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    background-color: var(--light-bg);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.hitler-quote {
+    text-align: center;
+    border-left: none;
+    border-top: 3px solid var(--accent-brown);
+    border-bottom: 3px solid var(--accent-brown);
+}
+
+.hitler-quote p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.member-quote {
+    font-size: 1.15rem;
+}
+
+blockquote cite {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-style: normal;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* Statistics List */
+.statistics {
+    list-style: none;
+    margin-left: 0;
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.statistics li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.statistics li:last-child {
+    border-bottom: none;
+}
+
+/* Activities Grid */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.activity-column {
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 5px;
+    border-top: 3px solid var(--accent-brown);
+}
+
+.activity-column h3 {
+    margin-top: 0;
+    text-align: center;
+    color: var(--primary-dark);
+}
+
+.activity-column ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.activity-column li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.activity-column li::before {
+    content: "•";
+    position: absolute;
+    left: 0.5rem;
+    color: var(--accent-brown);
+    font-weight: bold;
+}
+
+/* Images */
+.image-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+figcaption {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Sources Section */
+.sources-section {
+    background-color: var(--highlight-bg);
+}
+
+.works-cited {
+    margin-top: 1.5rem;
+}
+
+.citation {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    text-indent: -2rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .content-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        width: 200px;
+        text-align: center;
+    }
+    
+    blockquote {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .hitler-quote p {
+        font-size: 1.15rem;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 1rem 0.5rem;
+    }
+    
+    .hero {
+        padding: 2rem 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .content-section {
+        padding: 1rem 0.75rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .content-section p,
+    .content-section li {
+        font-size: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    header {
+        position: static;
+    }
+    
+    nav {
+        display: none;
+    }
+    
+    .content-section {
+        page-break-inside: avoid;
+        box-shadow: none;
+    }
+    
+    .image-container {
+        page-break-inside: avoid;
+    }
+}
+
+/* Accessibility Improvements */
+a:focus,
+button:focus {
+    outline: 2px solid var(--accent-brown);
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling for navigation */
+html {
+    scroll-behavior: smooth;
+}
