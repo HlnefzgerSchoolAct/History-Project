@@ -43,8 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
+            const isActive = this.classList.toggle('active');
             navMenu.classList.toggle('active');
+            this.setAttribute('aria-expanded', isActive);
         });
         
         // Close menu when clicking outside
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
         
@@ -60,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'Escape') {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
     }
@@ -167,37 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightNav(); // Call on load
 });
 
-// ========================================
-// Accordion/Collapsible Sections
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const accordionItem = this.parentElement;
-            const isActive = accordionItem.classList.contains('active');
-            
-            // Close all accordion items
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Open clicked item if it wasn't already active
-            if (!isActive) {
-                accordionItem.classList.add('active');
-            }
-        });
-        
-        // Keyboard accessibility
-        header.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
-    });
-});
+
 
 // ========================================
 // Timeline Animation for Membership Growth
