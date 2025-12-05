@@ -485,18 +485,23 @@
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
             }
             
-            // Show first N questions, hide the rest
-            allQuestions.forEach((question) => {
-                const selectedIndex = shuffled.indexOf(question);
-                if (selectedIndex < QUESTIONS_TO_DISPLAY) {
+            // Show first N questions from shuffled array, hide the rest
+            shuffled.forEach((question, index) => {
+                if (index < QUESTIONS_TO_DISPLAY) {
                     question.hidden = false;
-                    // Update legend numbering to show sequential numbers
-                    const legend = question.querySelector('legend');
-                    const originalText = originalLegends.get(question);
-                    const newNumber = selectedIndex + 1;
-                    legend.textContent = originalText.replace(/^\d+\./, `${newNumber}.`);
                 } else {
                     question.hidden = true;
+                }
+            });
+            
+            // Renumber visible questions sequentially based on DOM order
+            let displayNumber = 1;
+            allQuestions.forEach((question) => {
+                if (!question.hidden) {
+                    const legend = question.querySelector('legend');
+                    const originalText = originalLegends.get(question);
+                    legend.textContent = originalText.replace(/^\d+\./, `${displayNumber}.`);
+                    displayNumber++;
                 }
             });
         }
