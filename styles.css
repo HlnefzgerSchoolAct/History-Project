@@ -396,6 +396,12 @@ html {
     margin-bottom: 2rem;
 }
 
+/* Hide questions not selected for current quiz attempt */
+.quiz-question[hidden],
+.quiz-hidden {
+    display: none !important;
+}
+
 .quiz-intro {
     font-size: 1.1rem;
     margin-bottom: 2rem;
