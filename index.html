@@ -423,7 +423,7 @@
 
         <div id="quiz-results" class="quiz-results" style="display: none;">
             <h3 class="results-title">Your Results</h3>
-            <p class="results-score">You scored <span id="score">0</span> out of 7</p>
+            <p class="results-score">You scored <span id="score">0</span> out of <span id="total-questions">6</span></p>
             <p class="results-message" id="results-message"></p>
             <button type="button" class="quiz-retry-btn">Try Again</button>
         </div>
@@ -463,6 +463,13 @@
         const resetBtn = document.querySelector('.quiz-reset-btn');
         const retryBtn = document.querySelector('.quiz-retry-btn');
 
+        // Store original legend texts to preserve them across randomizations
+        const originalLegends = new Map();
+        document.querySelectorAll('.quiz-question').forEach(question => {
+            const legend = question.querySelector('legend');
+            originalLegends.set(question, legend.textContent);
+        });
+
         /**
          * Randomly selects N questions from the question pool to display
          * Hides the remaining questions using the 'hidden' attribute
@@ -479,15 +486,15 @@
             }
             
             // Show first N questions, hide the rest
-            allQuestions.forEach((question, index) => {
+            allQuestions.forEach((question) => {
                 const selectedIndex = shuffled.indexOf(question);
                 if (selectedIndex < QUESTIONS_TO_DISPLAY) {
                     question.hidden = false;
                     // Update legend numbering to show sequential numbers
                     const legend = question.querySelector('legend');
-                    const legendText = legend.textContent;
+                    const originalText = originalLegends.get(question);
                     const newNumber = selectedIndex + 1;
-                    legend.textContent = legendText.replace(/^\d+\./, `${newNumber}.`);
+                    legend.textContent = originalText.replace(/^\d+\./, `${newNumber}.`);
                 } else {
                     question.hidden = true;
                 }
