@@ -656,3 +656,525 @@ html {
         font-size: 1rem;
     }
 }
+
+/* ===== INTERACTIVE TIMELINE STYLES ===== */
+.timeline-wrapper {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(to bottom, var(--light-bg), var(--white));
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-line {
+    position: relative;
+    height: 4px;
+    background-color: var(--border-color);
+    margin: 2rem 0;
+}
+
+.timeline-events {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    border: 3px solid var(--white);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-event:hover .timeline-dot {
+    transform: scale(1.2);
+    background-color: var(--accent-brown);
+}
+
+.timeline-event.active .timeline-dot {
+    background-color: var(--accent-brown);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(139, 115, 85, 0.2);
+}
+
+.timeline-year {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.timeline-event.active .timeline-year {
+    color: var(--accent-brown);
+    font-size: 1.05rem;
+}
+
+.timeline-content {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-brown);
+    min-height: 120px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-title {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-description {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.timeline-btn {
+    padding: 0.75rem 1.5rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1rem;
+    background-color: var(--accent-brown);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-btn:hover:not(:disabled) {
+    background-color: #7a6347;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-btn:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.timeline-counter {
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+/* ===== HOVER-TO-REVEAL FACTS STYLES ===== */
+.hover-fact {
+    position: relative;
+    display: inline-block;
+    margin: 0.5rem 0;
+}
+
+.hover-trigger {
+    color: var(--accent-brown);
+    font-weight: bold;
+    cursor: help;
+    border-bottom: 2px dotted var(--accent-brown);
+    transition: all 0.3s ease;
+}
+
+.hover-trigger:hover {
+    color: #7a6347;
+    border-bottom-style: solid;
+}
+
+.hover-reveal {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 250px;
+    max-width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.hover-reveal::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: var(--primary-dark);
+}
+
+.hover-reveal.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* ===== FLIP CARDS STYLES ===== */
+.flip-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.flip-card {
+    perspective: 1000px;
+    height: 200px;
+    cursor: pointer;
+    position: relative;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, var(--accent-brown), #7a6347);
+    color: var(--white);
+}
+
+.flip-card-back {
+    background-color: var(--white);
+    color: var(--text-primary);
+    transform: rotateY(180deg);
+    border: 2px solid var(--accent-brown);
+}
+
+.flip-card-term {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.flip-card-hint {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.flip-card-definition {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ===== INTERACTIVE MAP STYLES ===== */
+.map-container {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.map-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+}
+
+.map-canvas {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-svg {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+}
+
+.map-marker {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-marker:hover {
+    filter: drop-shadow(0 0 5px rgba(139, 115, 85, 0.8));
+}
+
+.map-marker.active {
+    filter: drop-shadow(0 0 8px rgba(139, 115, 85, 1));
+}
+
+.map-legend {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.map-info {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.map-details {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-brown);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-details-title {
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.map-details-text {
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ===== SCENARIO GAME STYLES ===== */
+.scenario-content {
+    margin: 2rem 0;
+}
+
+.scenario-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.scenario-header h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.scenario-disclaimer {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 0.75rem;
+    background-color: var(--light-bg);
+    border-radius: 5px;
+}
+
+.scenario-situation {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-brown);
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-situation p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.scenario-choices {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.scenario-choice-btn {
+    padding: 1.25rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.05rem;
+    background-color: var(--white);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-choice-btn:hover {
+    border-color: var(--accent-brown);
+    background-color: var(--light-bg);
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scenario-result {
+    background-color: var(--highlight-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-result h4 {
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.scenario-consequence {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.scenario-nav {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.scenario-next-btn,
+.scenario-restart-btn {
+    padding: 1rem 2rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: var(--accent-brown);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scenario-next-btn:hover,
+.scenario-restart-btn:hover {
+    background-color: #7a6347;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== RESPONSIVE STYLES FOR NEW FEATURES ===== */
+@media (max-width: 768px) {
+    .timeline-events {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .timeline-event {
+        flex: 0 0 auto;
+    }
+    
+    .timeline-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .timeline-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .hover-reveal {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+    }
+    
+    .flip-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-canvas {
+        padding: 1rem;
+    }
+    
+    .scenario-choice-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-wrapper {
+        padding: 1rem;
+    }
+    
+    .timeline-title {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-description {
+        font-size: 1rem;
+    }
+    
+    .flip-card {
+        height: 180px;
+    }
+    
+    .flip-card-term {
+        font-size: 1.2rem;
+    }
+    
+    .map-container {
+        padding: 1rem;
+    }
+    
+    .map-title {
+        font-size: 1.1rem;
+    }
+    
+    .scenario-situation p {
+        font-size: 1rem;
+    }
+}
