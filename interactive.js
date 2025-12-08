@@ -6,12 +6,12 @@ function initTimeline() {
     if (!timelineContainer) return;
 
     const timelineEvents = [
-        { year: 1926, title: 'Formation', description: 'Groups began to come together under the name "Hitler Youth".' },
-        { year: 1933, title: 'Nazi Power', description: 'After Nazis took power, independent youth groups were closed.' },
+        { year: 1926, title: 'Formation', description: 'Groups came together called Hitler Youth' },
+        { year: 1933, title: 'Nazi Power', description: 'After Nazis took power, independent youth groups were closed, such as boy scouts' },
         { year: 1936, title: 'Standardization', description: 'Laws made the organisation more official and standardized.' },
-        { year: 1939, title: 'Mandatory Membership', description: 'Membership became effectively required for youths aged 10-18.' },
-        { year: 1944, title: 'War Participation', description: 'Older teens increasingly used in war, sometimes in fighting roles.' },
-        { year: 1945, title: 'Dissolution', description: 'After Germany\'s defeat, Allied authorities banned the Hitler Youth.' }
+        { year: 1939, title: 'Mandatory Membership', description: 'Membership became mandatory for ages 10-18.' },
+        { year: 1944, title: 'War Participation', description: 'Used more of the older teens in fighting roles for the war' },
+        { year: 1945, title: 'Dissolution', description: 'After Germany lost the war, Hitler Youth was banned.' }
     ];
 
     let currentEvent = 0;
