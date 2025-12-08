@@ -6,7 +6,7 @@
     <meta name="description" content="A student history project on the Hitler Youth: its formation, activities, and impact during World War II.">
     <title>Hitler Youth Project</title>
     <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -74,11 +74,54 @@
                 <li>1945: after Germany's defeat, Allied authorities banned Nazi groups, including the Hitler Youth.</li>
             </ul>
             <p>Sources:Britannica.</p>
+            
+            <!-- Interactive Timeline -->
+            <div id="interactive-timeline"></div>
         </section>
 
         <section id="leadership" class="content-section">
             <h2>Leadership & Organisation</h2>
             <p>Key leaders and how the group was organised:</p>
+            
+            <!-- Flip Cards for Key Leaders -->
+            <div class="flip-cards-grid">
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about Baldur von Schirach">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Baldur von Schirach</div>
+                            <div class="flip-card-hint">Click to learn more</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">Led the Hitler Youth from 1931 to 1940. He expanded the organization and established many of its core structures.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about Arthur Axmann">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Arthur Axmann</div>
+                            <div class="flip-card-hint">Click to learn more</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">Took over in 1940 and led during most of the war. He oversaw the militarization of the organization.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about the organizational structure">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Organizational Structure</div>
+                            <div class="flip-card-hint">Click to learn more</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">National leaders at the top, then regional (Gau) leaders, then local units. Special branches for aviation and naval training.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <ul>
                 <li><strong>Baldur von Schirach</strong> — led the Hitler Youth from 1931 to 1940.</li>
                 <li><strong>Arthur Axmann</strong> — took over in 1940 and led during most of the war.</li>
@@ -92,7 +135,12 @@
             <h2>Growth and Membership</h2>
             <div class="content-wrapper">
                 <div class="text-content">
-                    <p>By 1939, other youth groups had been banned and the Hitler Youth (for boys) and the League of German Girls (BDM) were the main youth organizations. The Nazis reported high membership numbers, but pressure and laws pushed many to join.</p>
+                    <p>By 1939, other youth groups had been banned and the Hitler Youth (for boys) and the League of German Girls (BDM) were the main youth organizations. The Nazis reported high membership numbers, but 
+                    <span class="hover-fact">
+                        <span class="hover-trigger">pressure and laws</span>
+                        <span class="hover-reveal">Social pressure from peers, teachers, and community leaders was combined with legal requirements. By 1939, parents could face fines or legal consequences if their children didn't join.</span>
+                    </span>
+                    pushed many to join.</p>
                     
                     <h3>Official membership numbers</h3>
                     <ul class="statistics">
@@ -109,11 +157,66 @@
                     <figcaption>Photo: United States Holocaust Memorial Museum.  </figcaption>
                 </figure>
             </div>
+            
+            <!-- Interactive Map -->
+            <div id="interactive-map"></div>
         </section>
 
         <section id="structure" class="content-section">
             <h2>Structure & Age Groups</h2>
             <p>The organisation had different groups by age and gender:</p>
+            
+            <!-- Flip Cards for Age Groups -->
+            <div class="flip-cards-grid">
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about Deutsches Jungvolk">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Deutsches Jungvolk (DJ)</div>
+                            <div class="flip-card-hint">Boys 10-14</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">The "German Young People" - younger boys who learned basic Nazi ideology through games, sports, and camping activities.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about Hitlerjugend">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Hitlerjugend (HJ)</div>
+                            <div class="flip-card-hint">Boys 14-18</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">The main Hitler Youth division for older boys, with increased military training and ideological indoctrination.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about Jungmädel">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Jungmädel</div>
+                            <div class="flip-card-hint">Girls 10-14</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">The "Young Girls" division focused on physical fitness, domestic skills, and Nazi values for younger girls.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card" tabindex="0" role="button" aria-label="Click to learn about BDM">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-term">Bund Deutscher Mädel (BDM)</div>
+                            <div class="flip-card-hint">Girls 14-18</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="flip-card-definition">The "League of German Girls" trained older girls for their future roles as wives and mothers in Nazi society.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <ul>
                 <li><strong>Deutsches Jungvolk (DJ):</strong> boys 10–14.</li>
                 <li><strong>Hitlerjugend (HJ):</strong> boys 14–18.</li>
@@ -174,7 +277,17 @@
                 <cite>—Alfons Heck, former Hitler Youth member</cite>
             </blockquote>
             
-            <p>The Hitler Youth mixed physical training with lessons in Nazi ideas. Younger kids learned stories and slogans, while older teens got more political lessons and military training.</p>
+            <p>The Hitler Youth mixed 
+            <span class="hover-fact">
+                <span class="hover-trigger">physical training</span>
+                <span class="hover-reveal">Activities included hiking, camping, sports competitions, and military-style drills designed to create physically fit and obedient youth.</span>
+            </span>
+            with lessons in Nazi ideas. Younger kids learned stories and slogans, while older teens got more 
+            <span class="hover-fact">
+                <span class="hover-trigger">political lessons</span>
+                <span class="hover-reveal">Lessons taught racial ideology, anti-Semitism, devotion to Hitler, and the belief in German superiority and territorial expansion.</span>
+            </span>
+            and military training.</p>
             <p>Sources: Alfons Heck & USHMM</p>
         </section>
 
@@ -213,8 +326,18 @@
 
         <section id="resistance" class="content-section">
             <h2>Resistance & Regional Variations</h2>
-            <p>Groups like the Edelweiss Pirates pushed back culturally or sometimes helped others. Resistance varied by city and region. People who resisted could face arrest, prison, or worse.</p>
+            <p>Groups like the 
+            <span class="hover-fact">
+                <span class="hover-trigger">Edelweiss Pirates</span>
+                <span class="hover-reveal">A loosely organized group of working-class youth who rejected Hitler Youth culture. They wore distinctive checkered shirts, went on hiking trips, and sometimes engaged in acts of resistance including helping deserters and distributing anti-Nazi leaflets.</span>
+            </span>
+            pushed back culturally or sometimes helped others. Resistance varied by city and region. People who resisted could face arrest, prison, or worse.</p>
             <p>Sources: USHMM</p>
+            
+            <!-- Scenario Simulation Game -->
+            <h3>Historical Decision Simulation</h3>
+            <p>Experience the difficult choices faced by German youth during this period through this educational simulation:</p>
+            <div id="scenario-game"></div>
         </section>
 
         <section id="aftermath" class="content-section highlight-section">
@@ -313,6 +436,9 @@
         <p>Huehnergarth's 4th Hour History Class</p>
     </footer>
 
+    <!-- Interactive Features JavaScript -->
+    <script src="interactive.js"></script>
+    
     <!-- Quiz JavaScript -->
     <script>
         // Correct answers for the quiz pool
