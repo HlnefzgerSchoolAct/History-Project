@@ -953,8 +953,6 @@ html {
 }
 
 .map-marker.active {
-    r: 4;
-    fill: #7a6347;
     filter: drop-shadow(0 0 8px rgba(139, 115, 85, 1));
 }
 

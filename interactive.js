@@ -182,9 +182,17 @@ function initInteractiveMap() {
             const regionId = marker.dataset.region;
             const region = regions.find(r => r.id === regionId);
             
-            // Remove active class from all markers
-            markers.forEach(m => m.classList.remove('active'));
+            // Remove active class from all markers and reset their appearance
+            markers.forEach(m => {
+                m.classList.remove('active');
+                m.setAttribute('r', '3');
+                m.setAttribute('fill', '#8b7355');
+            });
+            
+            // Set active marker appearance
             marker.classList.add('active');
+            marker.setAttribute('r', '4');
+            marker.setAttribute('fill', '#7a6347');
 
             // Update details
             detailsTitle.textContent = region.name;
@@ -192,14 +200,14 @@ function initInteractiveMap() {
         });
 
         marker.addEventListener('mouseenter', () => {
-            marker.style.r = '4';
-            marker.style.fill = '#7a6347';
+            marker.setAttribute('r', '4');
+            marker.setAttribute('fill', '#7a6347');
         });
 
         marker.addEventListener('mouseleave', () => {
             if (!marker.classList.contains('active')) {
-                marker.style.r = '3';
-                marker.style.fill = '#8b7355';
+                marker.setAttribute('r', '3');
+                marker.setAttribute('fill', '#8b7355');
             }
         });
     });
