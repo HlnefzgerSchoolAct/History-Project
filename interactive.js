@@ -62,37 +62,36 @@ function initTimeline() {
             year: 1926, 
             title: 'Formation', 
             description: 'Groups came together called Hitler Youth',
-            worldEvent: 'General Strike in Britain; Germany joins League of Nations'
         },
         { 
             year: 1933, 
             title: 'Nazi Power', 
             description: 'After Nazis took power, independent youth groups were closed, such as boy scouts',
-            worldEvent: 'FDR becomes US President; Prohibition ends in the US'
+         
         },
         { 
             year: 1936, 
             title: 'Standardization', 
             description: 'Laws made the organisation more official and standardized.',
-            worldEvent: 'Berlin Olympics held; Spanish Civil War begins'
+           
         },
         { 
             year: 1939, 
             title: 'Mandatory Membership', 
             description: 'Membership became mandatory for ages 10-18.',
-            worldEvent: 'WWII begins; Einstein\'s letter to FDR about atomic research'
+            
         },
         { 
             year: 1944, 
             title: 'War Participation', 
             description: 'Used more of the older teens in fighting roles for the war',
-            worldEvent: 'D-Day invasion of Normandy; Battle of the Bulge'
+           
         },
         { 
             year: 1945, 
             title: 'Dissolution', 
             description: 'After Germany lost the war, Hitler Youth was banned.',
-            worldEvent: 'Germany surrenders; United Nations founded; Atomic bombs dropped'
+           
         }
     ];
 
@@ -101,7 +100,7 @@ function initTimeline() {
     const timelineHTML = `
         <div class="timeline-wrapper">
             <div class="timeline-header">
-                <h3>Hitler Youth Timeline with World Events</h3>
+                <h3>Hitler Youth Timeline</h3>
             </div>
             <div class="timeline-line"></div>
             <div class="timeline-events">
@@ -118,13 +117,6 @@ function initTimeline() {
                     <div class="timeline-track-content">
                         <h3 class="timeline-title">${timelineEvents[0].title}</h3>
                         <p class="timeline-description">${timelineEvents[0].description}</p>
-                    </div>
-                </div>
-                <div class="timeline-divider"></div>
-                <div class="timeline-track world-track">
-                    <h4 class="timeline-track-label">World Events</h4>
-                    <div class="timeline-track-content">
-                        <p class="timeline-world-event">${timelineEvents[0].worldEvent}</p>
                     </div>
                 </div>
             </div>
@@ -145,7 +137,6 @@ function initTimeline() {
     const counter = timelineContainer.querySelector('.timeline-counter');
     const title = timelineContainer.querySelector('.timeline-title');
     const description = timelineContainer.querySelector('.timeline-description');
-    const worldEvent = timelineContainer.querySelector('.timeline-world-event');
 
     function updateTimeline(index) {
         currentEvent = index;
@@ -158,15 +149,12 @@ function initTimeline() {
         // Update content with animation
         title.style.opacity = '0';
         description.style.opacity = '0';
-        worldEvent.style.opacity = '0';
         
         setTimeout(() => {
             title.textContent = timelineEvents[index].title;
             description.textContent = timelineEvents[index].description;
-            worldEvent.textContent = timelineEvents[index].worldEvent;
             title.style.opacity = '1';
             description.style.opacity = '1';
-            worldEvent.style.opacity = '1';
         }, 200);
 
         // Update buttons
