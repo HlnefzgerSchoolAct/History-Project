@@ -10,7 +10,12 @@
 </head>
 <body>
     <header>
-        <nav>
+        <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="hamburger-icon"></span>
+            <span class="hamburger-icon"></span>
+            <span class="hamburger-icon"></span>
+        </button>
+        <nav class="main-nav">
             <ul>
                 <li><a href="#introduction">Introduction</a></li>
                 <li><a href="#vision">Hitler's Vision</a></li>
@@ -143,10 +148,10 @@
                     pushed many kids to join.</p>
                     
                     <h3>Official membership numbers</h3>
-                    <ul class="statistics">
-                        <li><strong>End of 1933:</strong> ~100,000 members</li>
-                        <li><strong>1937:</strong> ~5.4 million </li>
-                        <li><strong>1940:</strong> ~7.2 million </li>
+                    <ul class="statistics" id="membership-stats">
+                        <li><strong>End of 1933:</strong> <span class="stat-number" data-target="100000">0</span> members</li>
+                        <li><strong>1937:</strong> <span class="stat-number" data-target="5400000">0</span> million</li>
+                        <li><strong>1940:</strong> <span class="stat-number" data-target="7200000">0</span> million</li>
                     </ul>
                 </div>
                 
@@ -249,12 +254,37 @@
                 </div>
             </div>
             
-            <figure class="image-container">
-                <img src="https://dsvfmvr182ibt.cloudfront.net/prod/uploads/2018/09/WL4094_1200x800_acf_cropped.jpg" 
-                     alt="Historic photo of Hitler Youth activities" 
-                     loading="lazy">
-                <figcaption>Photo: Wiener Holocaust Library. Check image rights before using.</figcaption>
-            </figure>
+            <!-- Image Carousel -->
+            <h3>Historical Photos of Hitler Youth Activities</h3>
+            <div class="carousel-container" id="activities-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide active">
+                        <img src="https://dsvfmvr182ibt.cloudfront.net/prod/uploads/2018/09/WL4094_1200x800_acf_cropped.jpg" 
+                             alt="Hitler Youth members engaged in physical activities" 
+                             loading="lazy">
+                        <div class="carousel-caption">Hitler Youth members during physical training exercises. Photo: Wiener Holocaust Library.</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_1080,h_540,g_auto/dpr_auto/f_auto/q_auto:eco/v1/how-the-hitler-youth-turned-a-generation-of-kids-into-naziss-featured-photo?_a=BAVAZGID0" 
+                             alt="Hitler Youth members in uniform formation" 
+                             loading="lazy">
+                        <div class="carousel-caption">Hitler Youth members in uniform during a formal gathering. Photo: History.com / A&E Networks.</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://perspectives.ushmm.org/item/332/thumb" 
+                             alt="Group photo of Hitler Youth members" 
+                             loading="lazy">
+                        <div class="carousel-caption">Members of the Hitler Youth organization. Photo: United States Holocaust Memorial Museum.</div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous image">&#10094;</button>
+                <button class="carousel-btn carousel-next" aria-label="Next image">&#10095;</button>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                </div>
+            </div>
         </section>
 
         <section id="recruitment" class="content-section">
@@ -434,6 +464,22 @@
         <p>Harrison Nefzger</p>
         <p>Huehnergarth's 4th Hour History Class</p>
     </footer>
+
+    <!-- Image Lightbox -->
+    <div id="image-lightbox" class="lightbox" style="display: none;">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-image" src="" alt="">
+            <div class="lightbox-caption"></div>
+            <div class="lightbox-zoom-controls">
+                <button class="lightbox-zoom-in" aria-label="Zoom in">+</button>
+                <button class="lightbox-zoom-out" aria-label="Zoom out">-</button>
+                <button class="lightbox-zoom-reset" aria-label="Reset zoom">Reset</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Interactive Features JavaScript -->
     <script src="interactive.js"></script>

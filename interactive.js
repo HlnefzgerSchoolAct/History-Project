@@ -1,23 +1,108 @@
 // Interactive Features for Hitler Youth History Project
 
+// ===== HAMBURGER MENU =====
+function initHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('.main-nav');
+    
+    if (!hamburger || !nav) return;
+    
+    // Toggle menu
+    hamburger.addEventListener('click', () => {
+        const isActive = nav.classList.contains('active');
+        nav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', !isActive);
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isActive ? '' : 'hidden';
+    });
+    
+    // Close menu when clicking a link
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close menu with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && 
+            !nav.contains(e.target) && 
+            !hamburger.contains(e.target)) {
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 // ===== INTERACTIVE TIMELINE =====
 function initTimeline() {
     const timelineContainer = document.getElementById('interactive-timeline');
     if (!timelineContainer) return;
 
     const timelineEvents = [
-        { year: 1926, title: 'Formation', description: 'Groups came together called Hitler Youth' },
-        { year: 1933, title: 'Nazi Power', description: 'After Nazis took power, independent youth groups were closed, such as boy scouts' },
-        { year: 1936, title: 'Standardization', description: 'Laws made the organisation more official and standardized.' },
-        { year: 1939, title: 'Mandatory Membership', description: 'Membership became mandatory for ages 10-18.' },
-        { year: 1944, title: 'War Participation', description: 'Used more of the older teens in fighting roles for the war' },
-        { year: 1945, title: 'Dissolution', description: 'After Germany lost the war, Hitler Youth was banned.' }
+        { 
+            year: 1926, 
+            title: 'Formation', 
+            description: 'Groups came together called Hitler Youth',
+            worldEvent: 'General Strike in Britain; Germany joins League of Nations'
+        },
+        { 
+            year: 1933, 
+            title: 'Nazi Power', 
+            description: 'After Nazis took power, independent youth groups were closed, such as boy scouts',
+            worldEvent: 'FDR becomes US President; Prohibition ends in the US'
+        },
+        { 
+            year: 1936, 
+            title: 'Standardization', 
+            description: 'Laws made the organisation more official and standardized.',
+            worldEvent: 'Berlin Olympics held; Spanish Civil War begins'
+        },
+        { 
+            year: 1939, 
+            title: 'Mandatory Membership', 
+            description: 'Membership became mandatory for ages 10-18.',
+            worldEvent: 'WWII begins; Einstein\'s letter to FDR about atomic research'
+        },
+        { 
+            year: 1944, 
+            title: 'War Participation', 
+            description: 'Used more of the older teens in fighting roles for the war',
+            worldEvent: 'D-Day invasion of Normandy; Battle of the Bulge'
+        },
+        { 
+            year: 1945, 
+            title: 'Dissolution', 
+            description: 'After Germany lost the war, Hitler Youth was banned.',
+            worldEvent: 'Germany surrenders; United Nations founded; Atomic bombs dropped'
+        }
     ];
 
     let currentEvent = 0;
 
     const timelineHTML = `
         <div class="timeline-wrapper">
+            <div class="timeline-header">
+                <h3>Hitler Youth Timeline with World Events</h3>
+            </div>
             <div class="timeline-line"></div>
             <div class="timeline-events">
                 ${timelineEvents.map((event, index) => `
@@ -27,9 +112,21 @@ function initTimeline() {
                     </div>
                 `).join('')}
             </div>
-            <div class="timeline-content">
-                <h3 class="timeline-title">${timelineEvents[0].title}</h3>
-                <p class="timeline-description">${timelineEvents[0].description}</p>
+            <div class="timeline-content-dual">
+                <div class="timeline-track hy-track">
+                    <h4 class="timeline-track-label">Hitler Youth</h4>
+                    <div class="timeline-track-content">
+                        <h3 class="timeline-title">${timelineEvents[0].title}</h3>
+                        <p class="timeline-description">${timelineEvents[0].description}</p>
+                    </div>
+                </div>
+                <div class="timeline-divider"></div>
+                <div class="timeline-track world-track">
+                    <h4 class="timeline-track-label">World Events</h4>
+                    <div class="timeline-track-content">
+                        <p class="timeline-world-event">${timelineEvents[0].worldEvent}</p>
+                    </div>
+                </div>
             </div>
             <div class="timeline-controls">
                 <button class="timeline-btn timeline-prev" disabled>← Previous</button>
@@ -48,6 +145,7 @@ function initTimeline() {
     const counter = timelineContainer.querySelector('.timeline-counter');
     const title = timelineContainer.querySelector('.timeline-title');
     const description = timelineContainer.querySelector('.timeline-description');
+    const worldEvent = timelineContainer.querySelector('.timeline-world-event');
 
     function updateTimeline(index) {
         currentEvent = index;
@@ -60,12 +158,15 @@ function initTimeline() {
         // Update content with animation
         title.style.opacity = '0';
         description.style.opacity = '0';
+        worldEvent.style.opacity = '0';
         
         setTimeout(() => {
             title.textContent = timelineEvents[index].title;
             description.textContent = timelineEvents[index].description;
+            worldEvent.textContent = timelineEvents[index].worldEvent;
             title.style.opacity = '1';
             description.style.opacity = '1';
+            worldEvent.style.opacity = '1';
         }, 200);
 
         // Update buttons
@@ -316,11 +417,333 @@ function initScenarioGame() {
     renderScenario();
 }
 
+// ===== IMAGE LIGHTBOX =====
+function initImageLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    if (!lightbox) return;
+
+    const lightboxImg = lightbox.querySelector('.lightbox-image');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const zoomInBtn = lightbox.querySelector('.lightbox-zoom-in');
+    const zoomOutBtn = lightbox.querySelector('.lightbox-zoom-out');
+    const zoomResetBtn = lightbox.querySelector('.lightbox-zoom-reset');
+
+    let currentImageIndex = 0;
+    let images = [];
+    let zoomLevel = 1;
+
+    // Gather all images from image-container
+    function gatherImages() {
+        const imageContainers = document.querySelectorAll('.image-container');
+        images = Array.from(imageContainers).map(container => {
+            const img = container.querySelector('img');
+            const caption = container.querySelector('figcaption');
+            return {
+                src: img.src,
+                alt: img.alt,
+                caption: caption ? caption.textContent : ''
+            };
+        });
+    }
+
+    // Open lightbox
+    function openLightbox(index) {
+        currentImageIndex = index;
+        updateLightboxContent();
+        lightbox.style.display = 'flex';
+        setTimeout(() => lightbox.classList.add('active'), 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+            zoomLevel = 1;
+            lightboxImg.style.transform = 'scale(1)';
+            lightboxImg.classList.remove('zoomed');
+        }, 300);
+    }
+
+    // Update content
+    function updateLightboxContent() {
+        const image = images[currentImageIndex];
+        lightboxImg.src = image.src;
+        lightboxImg.alt = image.alt;
+        lightboxCaption.textContent = image.caption;
+        
+        // Show/hide navigation buttons
+        prevBtn.style.display = currentImageIndex > 0 ? 'block' : 'none';
+        nextBtn.style.display = currentImageIndex < images.length - 1 ? 'block' : 'none';
+        
+        // Reset zoom
+        zoomLevel = 1;
+        lightboxImg.style.transform = 'scale(1)';
+        lightboxImg.classList.remove('zoomed');
+    }
+
+    // Navigate
+    function showPrevImage() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateLightboxContent();
+        }
+    }
+
+    function showNextImage() {
+        if (currentImageIndex < images.length - 1) {
+            currentImageIndex++;
+            updateLightboxContent();
+        }
+    }
+
+    // Zoom functions
+    function zoomIn() {
+        zoomLevel = Math.min(zoomLevel + 0.25, 3);
+        lightboxImg.style.transform = `scale(${zoomLevel})`;
+        lightboxImg.classList.add('zoomed');
+    }
+
+    function zoomOut() {
+        zoomLevel = Math.max(zoomLevel - 0.25, 1);
+        lightboxImg.style.transform = `scale(${zoomLevel})`;
+        if (zoomLevel === 1) {
+            lightboxImg.classList.remove('zoomed');
+        }
+    }
+
+    function resetZoom() {
+        zoomLevel = 1;
+        lightboxImg.style.transform = 'scale(1)';
+        lightboxImg.classList.remove('zoomed');
+    }
+
+    // Event listeners
+    gatherImages();
+
+    // Make images clickable
+    document.querySelectorAll('.image-container').forEach((container, index) => {
+        const img = container.querySelector('img');
+        img.addEventListener('click', () => openLightbox(index));
+    });
+
+    // Click on image to toggle zoom
+    lightboxImg.addEventListener('click', () => {
+        if (zoomLevel === 1) {
+            zoomIn();
+        } else {
+            resetZoom();
+        }
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrevImage);
+    nextBtn.addEventListener('click', showNextImage);
+    zoomInBtn.addEventListener('click', zoomIn);
+    zoomOutBtn.addEventListener('click', zoomOut);
+    zoomResetBtn.addEventListener('click', resetZoom);
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'none') return;
+        
+        switch(e.key) {
+            case 'Escape':
+                closeLightbox();
+                break;
+            case 'ArrowLeft':
+                showPrevImage();
+                break;
+            case 'ArrowRight':
+                showNextImage();
+                break;
+            case '+':
+            case '=':
+                zoomIn();
+                break;
+            case '-':
+            case '_':
+                zoomOut();
+                break;
+            case '0':
+                resetZoom();
+                break;
+        }
+    });
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+// ===== ANIMATED STATISTICS =====
+function initAnimatedStats() {
+    const statsContainer = document.getElementById('membership-stats');
+    if (!statsContainer) return;
+
+    const statNumbers = statsContainer.querySelectorAll('.stat-number');
+    let hasAnimated = false;
+
+    function formatNumber(num, target) {
+        // For millions (5.4M, 7.2M), show decimal
+        if (target >= 1000000) {
+            return (num / 1000000).toFixed(1);
+        }
+        // For thousands, add commas
+        return num.toLocaleString();
+    }
+
+    function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16); // 60fps
+        let current = start;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = formatNumber(Math.floor(current), target);
+        }, 16);
+    }
+
+    // Use Intersection Observer to trigger animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.dataset.target);
+                    animateCounter(stat, target);
+                });
+                observer.disconnect();
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(statsContainer);
+}
+
+// ===== IMAGE CAROUSEL =====
+function initImageCarousel() {
+    const carousel = document.getElementById('activities-carousel');
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    
+    let currentSlide = 0;
+    let autoPlayInterval = null;
+    const autoPlayDelay = 5000; // 5 seconds
+
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Wrap around
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        // Add active class to current slide and dot
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoPlay();
+        startAutoPlay(); // Restart after manual navigation
+    });
+
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoPlay();
+        startAutoPlay(); // Restart after manual navigation
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopAutoPlay();
+            startAutoPlay(); // Restart after manual navigation
+        });
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        // Only handle if carousel is in view
+        const rect = carousel.getBoundingClientRect();
+        const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+        
+        if (!inView) return;
+
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            stopAutoPlay();
+            startAutoPlay();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            stopAutoPlay();
+            startAutoPlay();
+        }
+    });
+
+    // Start auto-play
+    startAutoPlay();
+}
+
 // ===== INITIALIZE ALL FEATURES =====
 document.addEventListener('DOMContentLoaded', () => {
+    initHamburgerMenu();
     initTimeline();
     initHoverFacts();
     initFlipCards();
     initInteractiveMap();
     initScenarioGame();
+    initImageLightbox();
+    initAnimatedStats();
+    initImageCarousel();
 });
