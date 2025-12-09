@@ -716,7 +716,7 @@ function initImageCarousel() {
     document.addEventListener('keydown', (e) => {
         // Only handle if carousel is in view
         const rect = carousel.getBoundingClientRect();
-        const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        const inView = rect.bottom > 0 && rect.top < window.innerHeight;
         
         if (!inView) return;
 
