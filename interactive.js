@@ -61,18 +61,18 @@ function initTimeline() {
         { 
             year: 1926, 
             title: 'Formation', 
-            description: 'Groups came together called Hitler Youth',
+            description: 'Groups formed called Hitler Youth',
         },
         { 
             year: 1933, 
             title: 'Nazi Power', 
-            description: 'After Nazis took power, independent youth groups were closed, such as boy scouts',
+            description: 'After Nazis took power, independent youth groups were banned, such as boy scouts',
          
         },
         { 
             year: 1936, 
             title: 'Standardization', 
-            description: 'Laws made the organisation more official and standardized.',
+            description: 'Laws made the organisation more official.',
            
         },
         { 
@@ -309,7 +309,7 @@ function initScenarioGame() {
 
     const scenarios = [
         {
-            situation: "It's 1938. You are 14 years old and your friends have joined the Hitler Youth. They pressure you to join.",
+            situation: "It's 1938. You are 14 years old and all of your friends have joined Hitler Youth. They pressure you to join...",
             choices: [
                 { text: "Join to fit in with friends", consequence: "You joined due to peer pressure, like millions of youths. Social pressure was a major recruitment tool." },
                 { text: "Refuse and face social isolation", consequence: "You faced isolation and potential legal consequences. By 1939, membership became mandatory with legal penalties for refusal." },
